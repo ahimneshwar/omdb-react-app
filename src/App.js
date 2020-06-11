@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import Nav from 'react-bootstrap/Nav'
+import { BrowserRouter, Route } from "react-router-dom"
+import FirstTab from "./components/FirstTab";
+import SecondTab from "./components/SecondTab";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  return (<><div className="container-fluid">
+    <Nav fill variant="tabs">
+      <Nav.Item>
+        <Nav.Link href="/1">First Tab</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/2" eventKey="2">Second Tab</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+      </Nav.Item>
+    </Nav>
+    <BrowserRouter>
+      <Route exact path="/" component={FirstTab} />
+      <Route exact path="/1" component={FirstTab} />
+      <Route path="/2" component={SecondTab} />
+    </BrowserRouter>
+  </div>  </>)
 }
 
-export default App;
+export default App
+
+
